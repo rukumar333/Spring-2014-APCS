@@ -1,0 +1,14 @@
+import java.io.*;
+import java.util.*;
+
+public class Recursion{
+
+    public int factorial(int n){
+	int result = n;
+	if(n = 0){
+	    return 1;
+	}else{
+	    n = n * (
+    }
+
+}
