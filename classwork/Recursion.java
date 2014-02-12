@@ -47,24 +47,49 @@ public class Recursion{
 	}
     }
 
-    public void hail(int x){
+    public String hail(int x){
+	String hailnums = "";
 	int n = x;
 	if(x == 1){
-	    System.out.println(x);
+	    count ++;
+	    return "1";
 	}else{
 	    if(x % 2 == 0){
-		System.out.println(x);
-		hail(n/2);
+		count ++;
+		hailnums = hailnums + x + "," + hail(n/2);
+		return hailnums;
 	    }
 	    if(x % 2 == 1){
-		System.out.println(x);
-		hail(3 * n + 1);
+		count ++;
+		hailnums = hailnums + x + "," + hail(3 * n  + 1);
+		return hailnums;
 	    }
 	}
+	return "Error";
     }
 
-    public int hailln(){
+    public int hailLen(int x){
+	count = 0;
+	hail(x);
+	int k = count;
+	count = 0;
+	return k;
+    }
 
+    public int longestHail(int x){
+	//can't figure out how to do this one recursively 
+	//at least it works using a loop?
+	//need to figure this one out
+	int max = x;
+	int result = 0;
+	for(int i = x; i > 1; i--){
+	    int k = hailLen(max);
+	    int k1 = hailLen(i-1);
+	    if(k < k1){
+		max = i - 1;
+	    }
+	}
+	return max;
     }
 
     public static void main(String[]args){
@@ -76,6 +101,25 @@ public class Recursion{
 	// System.out.println(r.factorial(7));
 	// System.out.println(r.fib(45));
 	// System.out.println(r.fibltr(45));
-	r.hail(19);
+
+	// System.out.println(r.hail(1));
+	// System.out.println(r.hail(2));
+	// System.out.println(r.hail(3));
+	// System.out.println(r.hail(4));
+	// System.out.println(r.hail(5));
+
+    	// System.out.println(r.hailLen(1));
+    	// System.out.println(r.hailLen(2));
+    	// System.out.println(r.hailLen(3));
+    	// System.out.println(r.hailLen(4));
+    	// System.out.println(r.hailLen(5));
+
+    	System.out.println(r.longestHail(1));
+    	System.out.println(r.longestHail(2));
+    	System.out.println(r.longestHail(3));
+    	System.out.println(r.longestHail(4));
+    	System.out.println(r.longestHail(5));	
+    	System.out.println(r.longestHail(6));	
+    	System.out.println(r.longestHail(7));	
     }
 }
