@@ -28,61 +28,143 @@ public class Knight{
 
     public boolean inBounds(int x, int y){
 	if (x < size && y < size && x >= 0 && y >= 0){
-	    if(board[x][y]==0);
+	    if(board[x][y]==0){
 	    return true;
-	}else{
-	    return false;
+	    }
 	}
+	return false;
     }
 
     public void solve(){
-	solve(xcor, ycor);
+	solve(xcor, ycor, 1);
     }
 
-    public void solve(int x, int y){
-	count ++;
-	board[x][y] = count;
+    public void solve(int x, int y, int n){
+	board[x][y] = n;
 
-	if(count == size * size){
+	if(n == size * size){
 	    solved = true;
 	}
 
-	if(solved == false){
+	if(!solved){
 
 	    if(inBounds(x + 1, y + 2)){
-		solve(x + 1, y + 2);
+		solve(x + 1, y + 2, n + 1);
 	    }
 
+
 	    if(inBounds(x + 1, y - 2)){
-		solve(x + 1, y - 2);
+		if(!solved){
+		    solve(x + 1, y - 2, n + 1);
+		}
 	    }
 
 	    if(inBounds(x - 1, y + 2)){
-		solve(x - 1, y + 2);
+		if(!solved){
+		    solve(x - 1, y + 2, n + 1);
+		}
 	    }
 
 	    if(inBounds(x - 1, y - 2)){
-		solve(x - 1, y - 2);
+		if(!solved){
+		    solve(x - 1, y - 2, n + 1);
+		}
 	    }
 
 	    if(inBounds(x + 2, y + 1)){
-		solve(x + 2, y + 1);
+		if(!solved){
+		    solve(x + 2, y + 1, n + 1);
+		}
 	    }
 
 	    if(inBounds(x + 2, y - 1)){
-		solve(x + 2, y - 1);
+		if(!solved){
+		    solve(x + 2, y - 1, n + 1);
+		}
 	    }
 
 	    if(inBounds(x - 2, y + 1)){
-		solve(x - 2, y + 1);
+		if(!solved){
+		    solve(x - 2, y + 1, n + 1);
+		}
 	    }
 
 	    if(inBounds(x - 2, y - 1)){
-		solve(x - 2, y - 1);
+		if(!solved){
+		    solve(x - 2, y - 1, n + 1);
+		}
+	    }
+
+	    if(!solved){
+		board[x][y] = 0;
 	    }
 
 	}
 
     }
+
+    // public void closeSolve(int x, int y, int n){
+    // 	board[x][y] = n;
+
+    // 	if(n == size * size){
+    // 	    solved = true;
+    // 	}
+
+    // 	if(!solved){
+
+    // 	    if(inBounds(x + 1, y + 2)){
+    // 		solve(x + 1, y + 2, n + 1);
+    // 	    }
+
+
+    // 	    if(inBounds(x + 1, y - 2)){
+    // 		if(!solved){
+    // 		solve(x + 1, y - 2, n + 1);
+    // 		}
+    // 	    }
+
+    // 	    if(inBounds(x - 1, y + 2)){
+    // 		if(!solved){
+    // 		solve(x - 1, y + 2, n + 1);
+    // 		}
+    // 	    }
+
+    // 	    if(inBounds(x - 1, y - 2)){
+    // 		if(!solved){
+    // 		solve(x - 1, y - 2, n + 1);
+    // 		}
+    // 	    }
+
+    // 	    if(inBounds(x + 2, y + 1)){
+    // 		if(!solved){
+    // 		solve(x + 2, y + 1, n + 1);
+    // 		}
+    // 	    }
+
+    // 	    if(inBounds(x + 2, y - 1)){
+    // 		if(!solved){
+    // 		solve(x + 2, y - 1, n + 1);
+    // 		}
+    // 	    }
+
+    // 	    if(inBounds(x - 2, y + 1)){
+    // 		if(!solved){
+    // 		    solve(x - 2, y + 1, n + 1);
+    // 		}
+    // 	    }
+
+    // 	    if(inBounds(x - 2, y - 1)){
+    // 		if(!solved){
+    // 		solve(x - 2, y - 1, n + 1);
+    // 		}
+    // 	    }
+
+    // 	    if(!solved){
+    // 		board[x][y] = 0;
+    // 	    }
+
+    // 	}
+
+    // }
 
 }

@@ -6,7 +6,6 @@ public class Driver{
         try{
             //this grabs the number when you run the command 'java Drive 5'
             int size = Integer.parseInt(args[0]);
-
             Knight t=new Knight(size);
 
             t.solve();//this prints the coordinate version of the solution
