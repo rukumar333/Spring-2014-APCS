@@ -31,7 +31,7 @@ public class Recursion{
 	return result;
     }
 
-    public int fibltr(int n){
+    public int fibItr(int n){
 	return fibHelp(0,1,n);
     }
 
@@ -77,7 +77,6 @@ public class Recursion{
     }
 
     public int longestHail(int x){
-     
 	if (x == 1){
 	    return 1;
 	}else{
@@ -97,7 +96,7 @@ public class Recursion{
 	// System.out.println(r.factorial(6));
 	// System.out.println(r.factorial(7));
 	// System.out.println(r.fib(45));
-	// System.out.println(r.fibltr(45));
+	// System.out.println(r.fibItr(45));
 
 	// System.out.println(r.hail(1));
 	// System.out.println(r.hail(2));
