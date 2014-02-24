@@ -77,19 +77,16 @@ public class Recursion{
     }
 
     public int longestHail(int x){
-	//can't figure out how to do this one recursively 
-	//at least it works using a loop?
-	//need to figure this one out
-	int max = x;
-	int result = 0;
-	for(int i = x; i > 1; i--){
-	    int k = hailLen(max);
-	    int k1 = hailLen(i-1);
-	    if(k < k1){
-		max = i - 1;
+     
+	if (x == 1){
+	    return 1;
+	}else{
+	    if(hailLen(x) > longestHail(x - 1)){
+		return x;
+	    }else{
+		return longestHail(x - 1);
 	    }
 	}
-	return max;
     }
 
     public static void main(String[]args){
