@@ -3,6 +3,7 @@ import java.util.*;
 
 public class Knight{
     
+    ArrayList<String> steps = new ArrayList<String>();
     public int[][] board;
     int count, xcor, ycor, size;
     public boolean solved = false;
@@ -52,7 +53,6 @@ public class Knight{
 		solve(x + 1, y + 2, n + 1);
 	    }
 
-
 	    if(inBounds(x + 1, y - 2)){
 		if(!solved){
 		    solve(x + 1, y - 2, n + 1);
@@ -98,9 +98,7 @@ public class Knight{
 	    if(!solved){
 		board[x][y] = 0;
 	    }
-
 	}
-
     }
 
     // public void closeSolve(int x, int y, int n){

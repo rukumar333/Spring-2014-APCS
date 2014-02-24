@@ -81,7 +81,7 @@ public class Recursion{
 	if (x == 1){
 	    return 1;
 	}else{
-	    if(hailLen(x) > longestHail(x - 1)){
+	    if(hailLen(x) > hailLen(longestHail(x - 1))){
 		return x;
 	    }else{
 		return longestHail(x - 1);
