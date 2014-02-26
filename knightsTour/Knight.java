@@ -12,7 +12,7 @@ public class Knight{
 	String result = "";
 	for(int i = 0; i < board.length; i++){
 	    for(int k = 0; k < board.length; k++){
-		result = result + board[i][k] + " ";
+		result = result + board[i][k] + "\t";
 	    }
 	    result = result + "\n";
 	}
@@ -45,6 +45,7 @@ public class Knight{
 
 	if(n == size * size){
 	    solved = true;
+	    System.out.println("Step " + n + ": (" + x + ", " + y + ")");
 	}
 
 	if(!solved){
@@ -97,6 +98,8 @@ public class Knight{
 
 	    if(!solved){
 		board[x][y] = 0;
+	    }else{
+		System.out.println("Step " + n + ": (" + x + ", " + y + ")");
 	    }
 	}
     }
