@@ -3,7 +3,17 @@ import java.util.*;
 
 public class MergeSort{
 
-    // public int[] merge (int[]a;int[]b){
+    public void copy(int[] from,int startindex, int[] to){
+	for(int i = startindex; i - startindex < to.length; i ++){
+	    to[i] = from[i - startindex];
+	}
+    }
+
+    public void msort(int[] a){
+	int[] part1 = new int[a.length/2];
+	int[] part2 = new int[a.length - (a.length/2)];
+    }
+
     public int[] sort (int[]a,int[]b){
 
 	int track = 0;
@@ -45,5 +55,7 @@ public class MergeSort{
         MergeSort m = new MergeSort();
 	int[] c = m.sort(a,b);
 	System.out.println(Arrays.toString(c));
+	m.copy(c,0,a);
+	System.out.println(Arrays.toString(a));
     }
 }
