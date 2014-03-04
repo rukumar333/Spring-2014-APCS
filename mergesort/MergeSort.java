@@ -5,13 +5,20 @@ public class MergeSort{
 
     public void copy(int[] from,int startindex, int[] to){
 	for(int i = startindex; i - startindex < to.length; i ++){
-	    to[i] = from[i - startindex];
+	    to[i - startindex] = from[i];
 	}
     }
 
     public void msort(int[] a){
-	int[] part1 = new int[a.length/2];
-	int[] part2 = new int[a.length - (a.length/2)];
+	if(a.length != 1){
+	    int[] part1 = new int[a.length/2];
+	    int[] part2 = new int[a.length - (a.length/2)];
+	    copy(a,0,part1);
+	    copy(a,part1.length,part2);
+	    msort(part1);
+	    msort(part2);
+	    copy(sort(part1,part2),0,a);
+	}
     }
 
     public int[] sort (int[]a,int[]b){
@@ -50,12 +57,14 @@ public class MergeSort{
     }
 
     public static void main(String[] args){
-	int[] a = {1,3,5,10,12};
-	int[] b = {2,8,9,10,100};
+	Random r = new Random();
+	int [] rand = new int [30];
+	for (int i = 0; i < rand.length; i ++){
+	    rand[i]=r.nextInt(20);
+	}
         MergeSort m = new MergeSort();
-	int[] c = m.sort(a,b);
-	System.out.println(Arrays.toString(c));
-	m.copy(c,0,a);
-	System.out.println(Arrays.toString(a));
+	System.out.println(Arrays.toString(rand));
+	m.msort(rand);
+	System.out.println(Arrays.toString(rand));
     }
 }
