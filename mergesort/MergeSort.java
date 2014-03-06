@@ -58,7 +58,7 @@ public class MergeSort{
 
     public static void main(String[] args){
 	Random r = new Random();
-	int [] rand = new int [30];
+	int [] rand = new int [100];
 	for (int i = 0; i < rand.length; i ++){
 	    rand[i]=r.nextInt(20);
 	}
