@@ -58,10 +58,10 @@ public class Sorts{
 
     //with any object
 
-    public static void anymsort(ArrayList<Comparable> L){
+    public static <T extends Comparable<T>> void anymsort(ArrayList<T> L){
 	if(L.size() != 1){
-	    ArrayList<Comparable> part1 = new ArrayList<Comparable>(L.size()/2);
-	    ArrayList<Comparable> part2 = new ArrayList<Comparable>(L.size() - (L.size()/2));
+	    ArrayList<T> part1 = new ArrayList<T>(L.size()/2);
+	    ArrayList<T> part2 = new ArrayList<T>(L.size() - (L.size()/2));
 	    anycopy(L,0,L.size()/2,part1);
 	    anycopy(L,part1.size(),L.size() - L.size()/2,part2);
 	    anymsort(part1);
@@ -70,7 +70,7 @@ public class Sorts{
 	}
     }
 
-    public static void anycopy(ArrayList<Comparable> from,int startindex,int endindex, ArrayList<Comparable> to){
+    public static <T extends Comparable<T>> void anycopy(ArrayList<T> from,int startindex,int endindex, ArrayList<T> to){
 	if(to.size() == 0){
 	    for(int i = startindex; i - startindex < endindex; i ++){
 		to.add(i - startindex, from.get(i));
@@ -82,8 +82,8 @@ public class Sorts{
 	}
     }
 
-    public static ArrayList<Comparable> anysort (ArrayList<Comparable> a, ArrayList<Comparable> b){
-    	ArrayList<Comparable> result = new ArrayList<Comparable>(a.size()+ b.size());
+    public static <T extends Comparable<T>> ArrayList<T> anysort (ArrayList<T> a, ArrayList<T> b){
+    	ArrayList<T> result = new ArrayList<T>(a.size()+ b.size());
     	while(a.size() > 0 || b.size() > 0){
     	    if(a.size() == 0){
 		while(b.size() > 0){
@@ -134,16 +134,22 @@ public class Sorts{
     	// System.out.println(Arrays.toString(words.toArray()));
     	// m.msort(words);
     	// System.out.println(Arrays.toString(words.toArray()));
-	Sorts m = new Sorts();
-	ArrayList<Comparable> people = new ArrayList<Person>();
-	people.add(new Person("Rushil"));
-	people.add(new Person("Cushil"));
-	people.add(new Person("Bob"));
-	people.add(new Person("Tom"));
-	System.out.println(people);
-	m.anymsort(people);
-	System.out.println(people);
+	ArrayList<Person> L= new ArrayList<Person>();
+	L.add(new Person("Ben"));
+	L.add(new Person("Dave"));
+	L.add(new Person("Amy"));
+	L.add(new Person("Liz"));
+	L.add(new Person("Portnoy"));
+	L.add(new Person("Wolf"));
+	L.add(new Person("Zed"));
+	L.add(new Person("Xin"));
+	L.add(new Person("Smith"));
+	L.add(new Person("Will"));
+	L.add(new Person("Ed"));
+	L.add(new Person("Eddie"));
+	L.add(new Person("Aaron"));
+	L.add(new Person("Cary"));
+	Sorts.anymsort(L);
+	System.out.println(L);
     }
-
-	
 }
