@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Person implements Comparable{
+public class Person implements Comparable<Person>{
 
     public String name;
 
@@ -13,7 +13,7 @@ public class Person implements Comparable{
 	name = s;
     }
 
-    public int compareTo(Object other){
+    public int compareTo(Person other){
 	int result = 0;
 	if(other instanceof Person){
 	    result = this.toString().compareToIgnoreCase(other.toString());
