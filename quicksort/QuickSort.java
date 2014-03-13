@@ -3,23 +3,17 @@ import java.util.*;
 
 public class QuickSort{
 
-    private int focus = -1;
-    private int one = -1;
-    private int two = -1;
-    private int three = -1;
+    //    private int focus = -1;
 
     public int quickselect(int[] L, int k){
-	one = 0;
-	three = L.length - 1;
 	int result = quickselect(L,k,0,L.length - 1);
 	return result;
     }
 
     public int quickselect(int[] L, int k,int left, int right){
-	focus = partition(L,left,right);
+	int focus = partition(L,left,right);
 	//System.out.println(Arrays.toString(L));
 	//System.out.println("This is the focus " + focus);
-	two = focus;
 	if(focus == k){
 	    return L[k];
 	}
@@ -27,12 +21,27 @@ public class QuickSort{
 	    return L[left];
 	}
 	if(focus > k){
-	    three = focus;
-	    return quickselect(L,k,left,focus);
+	    return quickselect(L,k,left,focus-1);
 	}else{
-	    one = focus;
-	    return quickselect(L,k,focus, right);
+	    return quickselect(L,k,focus+1, right);
 	}
+    }
+
+    public void quicksort(int[] L,int left, int right){
+
+	int focus = partition(L,left,right);
+	if(left-right < 1){
+	    return;
+	}
+	// if(checkEqual(L,left,k)){
+	//     return L[left];
+	// }
+	quicksort(L,left,focus-1);
+	quicksort(L,focus+1, right);
+    }
+
+    public void quicksort(int[] L){
+	quicksort(L,0,L.length-1);
     }
 
     public int partition(int[] L, int left, int right){
@@ -104,11 +113,13 @@ public class QuickSort{
 	q.copy(rand,rand2);
 	System.out.println("This is the initial array \n" + Arrays.toString(rand));	
 	m.msort(rand2);
-	System.out.println("This is the sorted array \n" + Arrays.toString(rand2));	
-	System.out.println("This is the 6 mm th lowest number: " + q.quickselect(rand, 5));
+       	System.out.println("This is the sorted array using msort\n" + Arrays.toString(rand2)); 
+	// q.quicksort(rand);
+       	// System.out.println("This is the sorted array using quicksort\n" + Arrays.toString(rand)); 
+	// System.out.println("This is the 6th lowest number: " + q.quickselect(rand, 5));
+	// System.out.println(Arrays.toString(rand));
 	// int k = q.partition(rand,4,7);
-	// system.out.println(k);
-	System.out.println(Arrays.toString(rand));
+	// System.out.println(k);
     }
 
 }
