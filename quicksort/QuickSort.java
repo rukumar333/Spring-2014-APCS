@@ -21,23 +21,28 @@ public class QuickSort{
 	    return L[left];
 	}
 	if(focus > k){
-	    return quickselect(L,k,left,focus-1);
+	    return quickselect(L,k,left,focus);
 	}else{
-	    return quickselect(L,k,focus+1, right);
+	    return quickselect(L,k,focus, right);
 	}
     }
 
     public void quicksort(int[] L,int left, int right){
 
 	int focus = partition(L,left,right);
-	if(left-right < 1){
+	// System.out.println(Arrays.toString(L));
+	// System.out.println("This is the focus " + focus);
+	if(right-left < 2){
+	    return;
+	}
+	if(checkGreater(L,left,right)){
 	    return;
 	}
 	// if(checkEqual(L,left,k)){
 	//     return L[left];
 	// }
-	quicksort(L,left,focus-1);
-	quicksort(L,focus+1, right);
+	quicksort(L,left,focus);
+	quicksort(L,focus, right);
     }
 
     public void quicksort(int[] L){
@@ -52,7 +57,7 @@ public class QuickSort{
 	int[] temp = new int[L.length];
 	copy(L,temp);
 	int index = r.nextInt(right - left) + left;
-	//System.out.println("This is the partition index: " + index + " from " + left + " to " + right);
+	// System.out.println("This is the partition index: " + index + " from " + left + " to " + right);
 	int begin = left;
 	int end = right;
 
@@ -98,28 +103,50 @@ public class QuickSort{
 	    }
 	}
 	return true;
+    }
 
+    public boolean checkGreater(int[] L, int start, int end){
+	for(int i = start; i < end; i ++){
+	    if(L[i] > L[i+1]){
+		return false;
+	    }
+	}
+	return true;
     }
     public static void main(String[] args){
 	Random r = new Random();
-	int [] rand = new int [10];
+
+	long start, t;
+
+	int [] rand = new int [10000];
 	for (int i = 0; i < rand.length; i ++){
-	    rand[i]=r.nextInt(20+1);
+	    rand[i]=r.nextInt(1000);
 	}
 	// int[]rand = {1, 14, 9, 8, 13, 8, 4, 18, 18, 18};
+
 	int[] rand2 = new int[rand.length];
         QuickSort q = new QuickSort();
 	MergeSort m = new MergeSort();
 	q.copy(rand,rand2);
-	System.out.println("This is the initial array \n" + Arrays.toString(rand));	
+
+	// System.out.println("This is the initial array \n" + Arrays.toString(rand));	
+	start = System.currentTimeMillis();
 	m.msort(rand2);
-       	System.out.println("This is the sorted array using msort\n" + Arrays.toString(rand2)); 
-	// q.quicksort(rand);
+	t = System.currentTimeMillis() - start;
+	System.out.println("Time for mergesort: " + t);
+       	// System.out.println("This is the sorted array using msort\n" + Arrays.toString(rand2)); 
+
+	start = System.currentTimeMillis();
+	q.quicksort(rand);
+	t = System.currentTimeMillis() - start;
+	System.out.println("Time for quicksort: " + t);
        	// System.out.println("This is the sorted array using quicksort\n" + Arrays.toString(rand)); 
-	// System.out.println("This is the 6th lowest number: " + q.quickselect(rand, 5));
-	// System.out.println(Arrays.toString(rand));
-	// int k = q.partition(rand,4,7);
-	// System.out.println(k);
+
+	// int check = r.nextInt(rand.length);
+    	// System.out.println("This is the " + (check + 1) + "th lowest number: " + q.quickselect(rand, check));
+    	// System.out.println(Arrays.toString(rand));
+    	// int k = q.partition(rand,4,7);
+    	// System.out.println(k);
     }
 
 }
