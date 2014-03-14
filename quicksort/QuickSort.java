@@ -115,13 +115,13 @@ public class QuickSort{
     }
     public static void main(String[] args){
 	Random r = new Random();
-
+	
 	long start, t;
 
 	int [] rand = new int [10000];
 	for (int i = 0; i < rand.length; i ++){
 	    rand[i]=r.nextInt(1000);
-	}
+ 	}
 	// int[]rand = {1, 14, 9, 8, 13, 8, 4, 18, 18, 18};
 
 	int[] rand2 = new int[rand.length];
