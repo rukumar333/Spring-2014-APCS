@@ -3,8 +3,6 @@ import java.util.*;
 
 public class QuickSort{
 
-    //    private int focus = -1;
-
     public int quickselect(int[] L, int k){
 	int result = quickselect(L,k,0,L.length - 1);
 	return result;
@@ -35,9 +33,12 @@ public class QuickSort{
 	if(right-left < 2){
 	    return;
 	}
+
+	//this is to ensure the function does not go on in an infinite loop
 	if(checkGreater(L,left,right)){
 	    return;
 	}
+
 	// if(checkEqual(L,left,k)){
 	//     return L[left];
 	// }
@@ -49,42 +50,71 @@ public class QuickSort{
 	quicksort(L,0,L.length-1);
     }
 
-    public int partition(int[] L, int left, int right){
+    //improved version of partition using Mr.K's algorithm
+    public int partition(int[]L,int left,int right){
 	if(left == right){
 	    return left;
 	}
 	Random r = new Random();
-	int[] temp = new int[L.length];
-	copy(L,temp);
 	int index = r.nextInt(right - left) + left;
-	// System.out.println("This is the partition index: " + index + " from " + left + " to " + right);
-	int begin = left;
-	int end = right;
+	int t = L[right];
+	L[right] = L[index];
+	L[index] = t;
 
-
-	for(int i = left;i < right + 1; i ++){
-	    int k = 0;
-	    if(L[i] < L[index] && i != index){
-		temp[begin] = L[i];
-		begin ++;
+	for(int i = left; i < right; i ++){
+	    if(L[i] < L[right]){
+		t = L[i];
+		L[i] = L[left];
+		L[left] = t;
+		left ++;
 	    }
-	    if(L[i] >= L[index] && i != index){
-		temp[end] = L[i];
-		end --;
-		if(L[i] == L[index]){
-		    k = -1;
-		}
-	    }
-	    if(L[i] == L[index] && i != index && k == 0){
-		temp[begin] = L[i];
-		begin ++;
-	    }
-
 	}
-	temp[begin] = L[index];
-	copy(temp,L);
-	return begin;
+
+	t = L[right];
+	L[right] = L[left];
+	L[left] = t;
+	return left;
     }
+
+    //the original partition, it was very slow
+    /*
+    public int partition(int[] L, int left, int right){
+    	if(left == right){
+    	    return left;
+    	}
+    	Random r = new Random();
+    	int[] temp = new int[L.length];
+    	copy(L,temp);
+    	int index = r.nextInt(right - left) + left;
+    	// System.out.println("This is the partition index: " + index + " from " + left + " to " + right);
+    	int begin = left;
+    	int end = right;
+
+
+    	for(int i = left;i < right + 1; i ++){
+    	    int k = 0;
+    	    if(L[i] < L[index] && i != index){
+    		temp[begin] = L[i];
+    		begin ++;
+    	    }
+    	    if(L[i] >= L[index] && i != index){
+    		temp[end] = L[i];
+    		end --;
+    		if(L[i] == L[index]){
+    		    k = -1;
+    		}
+    	    }
+    	    if(L[i] == L[index] && i != index && k == 0){
+    		temp[begin] = L[i];
+    		begin ++;
+    	    }
+
+    	}
+    	temp[begin] = L[index];
+    	copy(temp,L);
+    	return begin;
+    }
+    */
 
     public void copy(int[]from, int[]to){
 	for(int i = 0; i < from.length; i ++){
@@ -93,7 +123,7 @@ public class QuickSort{
     }
 
 
-    //attempt to get rid of the infinite loop
+    //gets rid of the infinite loop in the quickselect
     public boolean checkEqual(int[] L,int start, int end){
 	int check = L[start];
 	for(int i = start; i < end + 1;i ++ ){
@@ -105,6 +135,7 @@ public class QuickSort{
 	return true;
     }
 
+    //gets rid of infinite loop in the sort
     public boolean checkGreater(int[] L, int start, int end){
 	for(int i = start; i < end; i ++){
 	    if(L[i] > L[i+1]){
@@ -118,9 +149,10 @@ public class QuickSort{
 	
 	long start, t;
 
-	int [] rand = new int [10000];
+	//creat an array of random numbers
+	int [] rand = new int [3000000];
 	for (int i = 0; i < rand.length; i ++){
-	    rand[i]=r.nextInt(1000);
+	    rand[i]=r.nextInt(100000);
  	}
 	// int[]rand = {1, 14, 9, 8, 13, 8, 4, 18, 18, 18};
 
@@ -128,7 +160,7 @@ public class QuickSort{
         QuickSort q = new QuickSort();
 	MergeSort m = new MergeSort();
 	q.copy(rand,rand2);
-
+	
 	// System.out.println("This is the initial array \n" + Arrays.toString(rand));	
 	start = System.currentTimeMillis();
 	m.msort(rand2);
