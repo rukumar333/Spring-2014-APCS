@@ -21,9 +21,9 @@ public class MyLinkedList{
 	}
     }
 
-    public Node getNode(int pos) throws Exception{
+    public Node getNode(int pos){
 	if(!checkInBounds(pos)){
-	    throw new Exception("Position is out of the bounds of the list");
+	    throw new IndexOutOfBoundsException("Position is out of the bounds of the list");
 	}
 	Node temp = buffer;
 	for(int i = 0; i < pos + 1; i ++){
@@ -32,7 +32,10 @@ public class MyLinkedList{
 	return temp;
     }
 
-    public void add(String s, int pos) throws Exception{
+    public void add(String s, int pos){
+	if(pos < 0 || pos > length){
+	    throw new IndexOutOfBoundsException("Position is out of the bounds of the list");
+	}
 	Node n = new Node(s);
 	Node first = getNode(pos - 1);
 	Node second = first.getNext();
@@ -41,23 +44,23 @@ public class MyLinkedList{
 	length++;
     }
 
-    public String get(int pos) throws Exception{
+    public String get(int pos){
 	if(!checkInBounds(pos)){
-	    throw new Exception("Position is out of the bounds of the list");
+	    throw new IndexOutOfBoundsException("Position is out of the bounds of the list");
 	}
 	return getNode(pos).toString();
     }
 
-    public void set(String s, int pos) throws Exception{
+    public void set(String s, int pos){
 	if(!checkInBounds(pos)){
-	    throw new Exception("Position is out of the bounds of the list");
+	    throw new IndexOutOfBoundsException("Position is out of the bounds of the list");
 	}
 	getNode(pos).setData(s);
     }
 
-    public void remove(int pos) throws Exception{
+    public void remove(int pos){
 	if(!checkInBounds(pos)){
-	    throw new Exception("Position is out of the bounds of the list");
+	    throw new IndexOutOfBoundsException("Position is out of the bounds of the list");
 	}
 	Node one = getNode(pos - 1);
 	Node two = one.getNext();
@@ -65,7 +68,7 @@ public class MyLinkedList{
 	one.setNext(three);
 	length --;
     }
-
+ 
     public int find(String s){
 	Node temp = buffer;
 	for(int i = 0; i < length; i ++){
@@ -82,7 +85,13 @@ public class MyLinkedList{
     }
 
     public String toString(){
-	return "";
+	String s = "[";
+	Node temp = buffer;
+	for(int i = 0; i < length; i ++){
+	    temp = temp.getNext();
+	    s = s + temp.getData + " ";
+	}
+	s = s + "]";      
     }
 
 }
