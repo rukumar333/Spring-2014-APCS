@@ -1,15 +1,15 @@
 import java.io.*;
 import java.util.*;
 
-public class MyLinkedList{
+public class MyLinkedList<T>{
 
-    private Node buffer;
-    private Node head;
-    private Node last;
+    private Node<T> buffer;
+    private Node<T> head;
+    private Node<T> last;
     private int length = 0;
 
     public MyLinkedList(){
-	buffer = new Node("");
+	buffer = new Node<T>(null);
 	head = buffer.getNext();
     }
 
@@ -20,60 +20,60 @@ public class MyLinkedList{
 	    return true;
 	}
     }
-
-    public Node getNode(int pos){
+    
+    public Node<T> getNode(int pos){
 	if(pos < -1 || pos > length - 1){
 	    throw new IndexOutOfBoundsException("Position is out of the bounds of the list");
 	}
-	Node temp = buffer;
+	Node<T> temp = buffer;
 	for(int i = 0; i < pos + 1; i ++){
 	    temp = temp.getNext();
 	}
 	return temp;
     }
 
-    public void add(String s, int pos){
+    public void add(T input, int pos){
 	if(pos < 0 || pos > length){
 	    throw new IndexOutOfBoundsException("Position is out of the bounds of the list");
 	}
-	Node n = new Node(s);
-	Node first = getNode(pos - 1);
-	Node second = first.getNext();
+	Node<T> n = new Node<T>(input);
+	Node<T> first = getNode(pos - 1);
+	Node<T> second = first.getNext();
 	n.setNext(second);
 	first.setNext(n);
 	length++;
     }
 
-    public String get(int pos){
+    public T get(int pos){
 	if(!checkInBounds(pos)){
 	    throw new IndexOutOfBoundsException("Position is out of the bounds of the list");
 	}
-	return getNode(pos).toString();
+	return getNode(pos).getData();
     }
 
-    public void set(String s, int pos){
+    public void set(T input, int pos){
 	if(!checkInBounds(pos)){
 	    throw new IndexOutOfBoundsException("Position is out of the bounds of the list");
 	}
-	getNode(pos).setData(s);
+	getNode(pos).setData(input);
     }
 
     public void remove(int pos){
 	if(!checkInBounds(pos)){
 	    throw new IndexOutOfBoundsException("Position is out of the bounds of the list");
 	}
-	Node one = getNode(pos - 1);
-	Node two = one.getNext();
-	Node three = two.getNext();
+	Node<T> one = getNode(pos - 1);
+	Node<T> two = one.getNext();
+	Node<T> three = two.getNext();
 	one.setNext(three);
 	length --;
     }
  
-    public int find(String s){
-	Node temp = buffer;
+    public int find(T data){
+	Node<T> temp = buffer;
 	for(int i = 0; i < length; i ++){
 	    temp = temp.getNext();
-	    if(temp.getData() == s){
+	    if(temp.getData() == data){
 		return i;
 	    }
 	}
@@ -89,9 +89,10 @@ public class MyLinkedList{
 	Node temp = buffer;
 	for(int i = 0; i < length; i ++){
 	    temp = temp.getNext();
-	    s = s + temp.getData() + " ";
+	    s = s + temp.getData() + ", ";
 	}
 	s = s + "]";      
+	s = s.replaceAll(", ]","]");
 	return s;
     }
 
