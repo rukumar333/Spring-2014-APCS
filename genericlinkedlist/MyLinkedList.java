@@ -51,7 +51,7 @@ public class MyLinkedList<T>{
 	return getNode(pos).getData();
     }
 
-    public void set(T input, int pos){
+    public void set(int pos, T input){
 	if(!checkInBounds(pos)){
 	    throw new IndexOutOfBoundsException("Position is out of the bounds of the list");
 	}
