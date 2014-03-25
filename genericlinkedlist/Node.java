@@ -6,9 +6,10 @@ public class Node<T>{
     private T data;
     private Node<T> next;
 
+
     public Node(T input){
 	data = input;
-	next = null;
+	next = new Node<T>();
     }
 
     public Node<T> getNext(){

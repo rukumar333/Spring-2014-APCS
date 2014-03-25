@@ -7,6 +7,7 @@ public class Driver{
 	mll.add(one,0);
 	mll.add(two,1);
 	mll.add(three,2);
+	System.out.println(mll.getHead());
 	// mll.remove(1);
 	System.out.println(mll);
 	// System.out.println(mll.get(10)); 

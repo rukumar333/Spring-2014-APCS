@@ -11,6 +11,11 @@ public class MyLinkedList<T>{
     public MyLinkedList(){
 	buffer = new Node<T>(null);
 	head = buffer.getNext();
+	last = buffer.getNext();
+    }
+
+    public String getHead(){
+	return head.getData().toString();
     }
 
     public boolean checkInBounds(int pos){
@@ -32,6 +37,15 @@ public class MyLinkedList<T>{
 	return temp;
     }
 
+    public void add(T input){
+	Node<T> n = new Node<T>(input);
+	Node<T> second = last.getNext();
+	n.setNext(second);
+	last.setNext(n);
+	last = n;
+	length ++;
+    }
+
     public void add(T input, int pos){
 	if(pos < 0 || pos > length){
 	    throw new IndexOutOfBoundsException("Position is out of the bounds of the list");
@@ -41,6 +55,9 @@ public class MyLinkedList<T>{
 	Node<T> second = first.getNext();
 	n.setNext(second);
 	first.setNext(n);
+	if(pos == length){
+	    last = n;
+	}
 	length++;
     }
 
@@ -66,6 +83,9 @@ public class MyLinkedList<T>{
 	Node<T> two = one.getNext();
 	Node<T> three = two.getNext();
 	one.setNext(three);
+	if(pos == length - 1){
+	    last = one;
+	}
 	length --;
     }
  
@@ -81,6 +101,10 @@ public class MyLinkedList<T>{
     }
 
     public int length(){
+	return length;
+    }
+
+    public int size(){
 	return length;
     }
 
