@@ -9,7 +9,7 @@ public class Node<T>{
 
     public Node(T input){
 	data = input;
-	next = new Node<T>();
+	next = null;
     }
 
     public Node<T> getNext(){
