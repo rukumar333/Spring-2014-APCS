@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class MyLinkedList<T>{
+public class MyLinkedList<T> implements Iterable<T>{
 
     private Node<T> buffer;
     private Node<T> head;
@@ -15,6 +15,9 @@ public class MyLinkedList<T>{
 	last = buffer.getNext();
     }
 
+    public Iterator<T> iterator(){
+	return new MyLLIterator<T>(this);
+    }
 
     public boolean checkInBounds(int pos){
 	if(pos < 0 || pos > length - 1){
