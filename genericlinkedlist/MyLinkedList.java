@@ -15,6 +15,10 @@ public class MyLinkedList<T> implements Iterable<T>{
 	last = buffer.getNext();
     }
 
+    public String name(){
+	return "Kumar, Rushil";
+    }
+
     public Iterator<T> iterator(){
 	return new MyLLIterator<T>(this);
     }
