@@ -4,7 +4,7 @@ import java.util.*;
 public class Sorts{
 
     //with Strings
-    /*
+    
     public static void msort(ArrayList<String> L){
     	if(L.size() != 1){
     	    ArrayList<String> part1 = new ArrayList<String>(L.size()/2);
@@ -56,10 +56,10 @@ public class Sorts{
     	}
     	return result;
     }
-    */
+    
 
     //with any object
-    
+    /*    
     public static <T extends Comparable<T>> void msort(ArrayList<T> L){
 	if(L.size() != 1){
 	    ArrayList<T> part1 = new ArrayList<T>(L.size()/2);
@@ -107,7 +107,7 @@ public class Sorts{
     	}
     	return result;
     }
-    
+    */    
     public static void main(String[] args){
     	// Random r = new Random();
     	// ArrayList<String> wordList = new ArrayList<String>();
@@ -138,7 +138,7 @@ public class Sorts{
     	// System.out.println(Arrays.toString(words.toArray()));
 
 	//People sort
-
+	/*
  	ArrayList<Person> L= new ArrayList<Person>();
 	L.add(new Person("Ben"));
 	L.add(new Person("Dave"));
@@ -156,6 +156,7 @@ public class Sorts{
 	L.add(new Person("Cary"));
 	Sorts.msort(L);
 	System.out.println(L);
+	*/
     }
     
 }

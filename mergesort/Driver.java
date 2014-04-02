@@ -1,52 +1,35 @@
+import java.util.*;
 public class Driver{
     public static void main(String[]args){
- int[]aryA = new int[5000000];
- int[]aryB = new int[aryA.length];
+	System.out.println(Sorts.name());
+	ArrayList<String>A1= new ArrayList<String>();
+	ArrayList<String>A2= new ArrayList<String>();
+	ArrayList<String>B1= new ArrayList<String>();
+	ArrayList<String>B2= new ArrayList<String>();
+	for(int i=0;i<10000;i++){
+	    String value=""+(10000-i);
+	    String value2=""+(i);
+	    A1.add(value);
+	    A2.add(value);
+	    B1.add(value);
+	    B2.add(value);
+	    B1.add(value2);
+	    B2.add(value2);
+	}
 
- for(int i = 0;i<aryA.length;i++){
-     aryA[i]=(int)(Math.random()*400000000-200000000);
-     aryB[i]=aryA[i];
- }
- 
- long start,end,duration,start2,end2;
+	Collections.sort(A2);
+	Collections.sort(B2);
 
- start=System.currentTimeMillis();
- Sorts.msort(aryA);
- end=System.currentTimeMillis();
+	Sorts.msort(A1);
+	Sorts.msort(B1);
 
- start2=System.currentTimeMillis();
- Arrays.sort(aryB);
- end2=System.currentTimeMillis();
-
- if(equals(aryA,aryB)){
-     System.out.println(Sorts.name()+" Time to mergesort \t"+aryA.length+" integers: "+(end-start)/1000.0+"seconds. builtin took:"+(end2-start2)/1000.0);
- }else{
-     System.out.println("Not Sorted!");
- }
-
-    }
-
-    public static boolean isSorted(int[]L){
- if(L==null || L.length<2){
-     return true;
- }
- for(int i=0; i<L.length-1;i++)
-     if(L[i]>L[i+1]){
- return false;
-     }
- return true;
-    }
-    public static boolean equals(int[]L1,int[]L2){
- if(L1.length == L2.length){
-     for(int i=0; i<L1.length-1;i++)
- if(L1[i]!=L2[i]){
-     return false;
- }
-     return true;
- }else{
-     return false;
- }
-
-
+	String ans=Sorts.name();
+	if(A1.equals(A2))
+	    ans+="Sorted A!";
+	if(B1.equals(B2))
+	    ans+="Sorted B!";
+	System.out.println(ans);
     }
 }
+
+

@@ -3,6 +3,10 @@ import java.util.*;
 
 public class Sorts{
 
+    public static String name(){
+	return "Kumar, Rushil";
+    }
+
     public static int quickselect(int[] L, int k){
 	int result = quickselect(L,k,0,L.length - 1);
 	return result;
