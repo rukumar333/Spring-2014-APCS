@@ -43,7 +43,7 @@ public class MyStack<T>{
 	if (this.empty()){
 	    throw new EmptyStackException();
 	}else{
-	    return list[head].getData();
+	    Node<T> temp = new Node<T>()
 	}
     }
 
