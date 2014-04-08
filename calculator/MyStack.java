@@ -92,6 +92,12 @@ public class MyStack<T>{
 	    result = result + temp.toString() + ", ";
 	    temp = temp.getNext();
 	}
+	if(!this.empty()){
+	    result = result + "]";      
+	    result = result.replaceAll(", ]","");
+	}
 	return result;
+	
     }
+
 }

@@ -3,35 +3,11 @@ import java.util.*;
 
 public class MyStack<T>{
 
-    public class Node<T>{
-
-	private T data;
-
-	public Node(T input){
-	    data = input;
-	}
-
-	public T getData(){
-	    return data;
-	}
-
-	public void setData(T input){
-	    data = input;
-	}   
-
-	public String toString(){
-	    return data.toString();
-	}
-
-    }
-    //end of Node
-
-
-    Node[] list = new Node[100];
+    T[] list = (T[])new Object[100];
     int head;
+    boolean start = true;
     
     public MyStack(){
-	// list = new Node[100];
 	head = 0;
     }
 
@@ -43,7 +19,7 @@ public class MyStack<T>{
 	if (this.empty()){
 	    throw new EmptyStackException();
 	}else{
-	    Node<T> temp = new Node<T>()
+	    return list[head];
 	}
     }
 
@@ -54,19 +30,33 @@ public class MyStack<T>{
     }
 
     public T push(T item){
-	Node<T> temp = new Node<T>(item);
-	head ++;
-	list[head] = temp;
-	return item;
+	if(start){
+	    list[head] = item;
+	    start = false;
+	    return item;
+	}else{
+	    head ++;
+	    list[head] = item;
+	    return item;
+	}
     }
 
     public int search(T item){
 	for(int i = 0; i < head + 1; i++){
-	    if(list[i].getData() == item){
+	    if(list[i] == item){
 		return i;
 	    }
 	}
 	return -1;
     }
 
+    public String toString(){
+	String result = "";
+	for(int i = 0; i < head + 1; i++){
+	    result = result + list[i].toString() + ", ";
+	}
+	return result;
+
+    }
+    
 }
