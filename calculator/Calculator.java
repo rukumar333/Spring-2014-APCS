@@ -14,7 +14,7 @@ public class Calculator{
 	    sc = new Scanner(System.in);
     	    System.out.print(">>>");
     	    String s = sc.next(); 
-
+	    
 	    if(s.equals("+")){
 		this.add();
 	    }
@@ -143,8 +143,8 @@ public class Calculator{
 		    this.clear();
 		}
 	    }catch(EmptyStackException e){
-		if(a.doubleValue() != 0.0){
-		    double quotient = 0 / a.doubleValue();
+		if(b.doubleValue() != 0.0){
+		    double quotient = 0 / b.doubleValue();
 		    Double result = new Double(quotient);
 		    stack.push(result);
 		    System.out.println("" + result);

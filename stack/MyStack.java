@@ -74,13 +74,13 @@ public class MyStack<T>{
 
     public int search(T item){
 	Node<T> temp = head;
-	int pos = length;
+	int pos = 1;
 	while(temp != null){
 	    if(temp.getData() == item){
 		return pos;
 	    }
 	    temp = temp.getNext();
-	    pos --;
+	    pos ++;
 	}
 	return -1;
     }
@@ -92,6 +92,11 @@ public class MyStack<T>{
 	    result = result + temp.toString() + ", ";
 	    temp = temp.getNext();
 	}
+	if(!this.empty()){
+	    result = result + "]";      
+	    result = result.replaceAll(", ]","");
+	}
 	return result;
+	
     }
 }
