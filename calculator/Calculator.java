@@ -72,7 +72,7 @@ public class Calculator{
 		stack.push(result);
 		System.out.println("" + result);
 	    }catch(EmptyStackException e){
-		double sum = 0 + a.doubleValue();
+		double sum = 0 + b.doubleValue();
 		Double result = new Double(sum);
 		stack.push(result);
 		System.out.println("" + result);
@@ -94,7 +94,7 @@ public class Calculator{
 		stack.push(result);
 		System.out.println("" + result);
 	    }catch(EmptyStackException e){
-		double difference = 0 - a.doubleValue();
+		double difference = 0 - b.doubleValue();
 		Double result = new Double(difference);
 		stack.push(result);
 		System.out.println("" + result);
@@ -116,7 +116,7 @@ public class Calculator{
 		stack.push(result);
 		System.out.println("" + result);
 	    }catch(EmptyStackException e){
-		double product = 0 * a.doubleValue();
+		double product = 0 * b.doubleValue();
 		Double result = new Double(product);
 		stack.push(result);
 		System.out.println("" + result);
@@ -126,7 +126,7 @@ public class Calculator{
 
     public void divide(){
 	if(stack.empty()){
-	    System.out.println("Error: No nums inputted /n");
+	    System.out.println("Error: No nums inputted");
 	}else{
 	    Double a = new Double(0.0);
 	    Double b = new Double(0.0);
