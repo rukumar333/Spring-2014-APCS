@@ -45,7 +45,7 @@ public class MyQueue<T>{
 	first = null;
     }
 
-    public boolean add(T item){
+    public boolean enqueue(T item){
 	if(first == null ){
 	    first = new Node<T>(item);
 	    head = first;
@@ -61,7 +61,7 @@ public class MyQueue<T>{
 	}
     }
 
-    public T poll(){
+    public T dequeue(){
 	if(!this.empty()){
 	    T result = first.getData();
 	    first = first.getNext();
