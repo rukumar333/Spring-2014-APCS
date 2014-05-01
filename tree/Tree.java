@@ -46,7 +46,7 @@ public class Tree{
     private Node curleft;
     private Node curright;
 
-    public Tree{
+    public Tree(){
 	head = null;
     }
 
@@ -54,8 +54,24 @@ public class Tree{
 	if(head == null){
 	    head = new Node(data);
 	}else{
-	    
+	    insert(data, head);
+	}
+    }	
+     
+    public void insert(int data, Node n){
+	Node temp = new Node(data);
+	if(n.getData() >= data){
+	    if(n.getLeft() == null){
+		n.setLeft(temp);
+	    }else{
+		insert(data, n.getLeft());
+	    }
+	}else{
+	    if(n.getRight() == null){
+		n.setRight(temp);
+	    }else{
+		insert(data, n.getRight());
+	    }
 	}
     }
-
 }
