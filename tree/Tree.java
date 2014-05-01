@@ -42,4 +42,10 @@ public class Tree{
 	}
     }
 
+    private Node head;
+
+    public Tree{
+	head = null;
+    }
+
 }
