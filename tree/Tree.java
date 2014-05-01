@@ -43,9 +43,19 @@ public class Tree{
     }
 
     private Node head;
+    private Node curleft;
+    private Node curright;
 
     public Tree{
 	head = null;
+    }
+
+    public void insert(int data){
+	if(head == null){
+	    head = new Node(data);
+	}else{
+	    
+	}
     }
 
 }
