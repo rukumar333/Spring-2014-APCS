@@ -93,10 +93,35 @@ public class Tree{
 	}
 	return null;
     }
+    /*    
+    public Node findParent(int target){
+	return find(target, head);
+    }
 
+    public Node findParent(int target, Node n){
+	if(n == null){
+	    return null;
+	}
+
+	if(n == head){
+	    return null;
+	}
+
+	left = n.getLeft();
+	right = n.getRight();
+	if(left.getData() == target)
+    }
+    */
+    
     public boolean remove(int target){
 	Node temp = find(target);
-
+	if(temp == null){
+	    return false;
+	}
+	if(temp.getLeft() == null && temp.getRight() == null){
+	    temp = null;
+	    return true;
+	}
 
 	if(temp.getLeft() == null){
 	    temp.setData(temp.getRight().getData());
@@ -169,8 +194,9 @@ public class Tree{
 	t.insert(10);
 	t.insert(80);
 	t.insert(75);
+	t.insert(150);
 	System.out.println(t);
-	t.remove(100);
+	t.remove(75);
 	System.out.println(t);
 	// System.out.println(t.getHead().getData());
 	// System.out.println(t.getHead().getRight().getData());
@@ -179,3 +205,6 @@ public class Tree{
 	// System.out.println(t.find(100));
     }
 }
+
+
+
