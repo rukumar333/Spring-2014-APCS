@@ -96,6 +96,8 @@ public class Tree{
 
     public boolean remove(int target){
 	Node temp = find(target);
+
+
 	if(temp.getLeft() == null){
 	    temp.setData(temp.getRight().getData());
 	    temp.setRight(temp.getRight().getRight());
