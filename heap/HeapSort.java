@@ -48,12 +48,12 @@ import java.util.*;
 		arr[index] = arr[index * 2 + 1];
 		arr[index * 2 + 1] = num;
 	    }else{
-		if(arr[index * 2 + 1] > arr[index * 2 + 2] && arr[index * 2 + 1] >= num){ //check for left child
+		if(arr[index * 2 + 1] > arr[index * 2 + 2] && arr[index * 2 + 1] > num){ //check for left child
 		    arr[index] = arr[index * 2 + 1];
 		    arr[index * 2 + 1] = num;
 		    pushDown(arr, index * 2 + 1, last - 1);
 		}else{
-		    if(arr[index * 2 + 1] < arr[index * 2 + 2] && arr[index * 2 + 2] >= num){ //check for right child	    
+		    if(arr[index * 2 + 1] < arr[index * 2 + 2] && arr[index * 2 + 2] > num){ //check for right child	    
 			arr[index] = arr[index * 2 + 2];
 			arr[index * 2 + 2] = num;
 			pushDown(arr, index * 2 + 2, last - 1);
