@@ -48,6 +48,10 @@ public class Tree{
 	head = null;
     }
 
+    public String name(){
+	return "Kumar,Rushil";
+    }
+
     public void insert(int data){
 	if(head == null){
 	    head = new Node(data);
@@ -112,7 +116,7 @@ public class Tree{
 	if(left.getData() == target)
     }
     */
-    
+    /*
     public boolean remove(int target){
 	Node temp = find(target);
 	if(temp == null){
@@ -145,6 +149,88 @@ public class Tree{
 	}
 	remove(tip.getData());
 	temp.setData(tip.getData());
+	return false;
+    }
+    */
+
+    public boolean hasTwoChildren(Node n){
+	return n.getLeft() != null && n.getRight() != null;
+    }
+
+    public boolean hasChildren(Node n){
+	return n.getLeft() != null || n.getRight() != null;
+    }
+
+    public boolean hasNoChildren(Node n){
+	return n.getLeft() == null && n.getRight() == null;
+    }
+
+    public boolean remove(int target){
+	boolean t = false;
+	boolean left = false;
+	boolean right = false;
+	Node parent = head;
+	Node child = head;
+
+	//this is the first part where we NEED the parent
+	while(hasChildren(parent)){             //loop will exit if parent does not have two children
+	    System.out.println(parent);
+	    if(parent.getLeft() != null && parent.getLeft().getData() == target){ // loop will exit if left has target data
+		child = parent.getLeft();
+	        left = true;
+		break;	     
+	    }
+	    if(parent.getRight() != null && parent.getRight().getData() == target){// loop will exit if right has target data
+		child = parent.getRight();
+		right = true;
+		break;
+	    }
+	    if(target > parent.getData() && parent.getRight() != null){
+		parent = parent.getRight();
+	    }else{
+		if(target <= parent.getData() && parent.getLeft() != null){
+		    parent = parent.getLeft();
+		}
+	    }
+	}
+	if(left){ //checks if a child has target value                  
+	    if(hasNoChildren(child)){  // base case if target node has no children
+		parent.setLeft(null);
+		return true;
+	    }
+	    if(child.getLeft() != null){ // base case if target node has one child
+		parent.setLeft(child.getLeft());
+		return true;
+	    }
+	    if(child.getRight() != null){
+		parent.setLeft(child.getRight());
+		return true;
+	    }
+	}
+	if(right){
+	    if(hasNoChildren(child)){  // base case if target node has no children
+		parent.setRight(null);
+		return true;
+	    }
+	    if(child.getLeft() != null){ // base case if target node has one child
+		parent.setRight(child.getLeft());
+		return true;
+	    }
+	    if(child.getRight() != null){
+		parent.setRight(child.getRight());
+		return true;
+	    }		
+	}
+	Node temp = find(target);
+	if(temp != null){
+	    Node tip = temp.getLeft();
+	    while(tip.getRight() != null){
+		tip = tip.getRight();
+	    }
+	    remove(tip.getData());
+	    temp.setData(tip.getData());
+	    return true;
+	}
 	return false;
     }
 
@@ -196,7 +282,7 @@ public class Tree{
 	t.insert(75);
 	t.insert(150);
 	System.out.println(t);
-	t.remove(75);
+	t.remove(50);
 	System.out.println(t);
 	// System.out.println(t.getHead().getData());
 	// System.out.println(t.getHead().getRight().getData());
