@@ -122,6 +122,14 @@ public class QuickSort{
 	}
     }
 
+    public boolean equalsTo(int[] a, int[] b){
+	for(int i = 0; i < a.length; i ++){
+	    if(a[i] != b[i])
+		return false;
+	}
+	return true;
+    }
+
 
     //gets rid of the infinite loop in the quickselect
     public boolean checkEqual(int[] L,int start, int end){
@@ -150,9 +158,9 @@ public class QuickSort{
 	long start, t;
 
 	//creat an array of random numbers
-	int [] rand = new int [3000000];
+	int [] rand = new int [100000];
 	for (int i = 0; i < rand.length; i ++){
-	    rand[i]=r.nextInt(100000);
+	    rand[i]=r.nextInt(1000);
  	}
 	// int[]rand = {1, 14, 9, 8, 13, 8, 4, 18, 18, 18};
 
@@ -165,7 +173,7 @@ public class QuickSort{
 	HeapSort.heapSort(rand2);
 	t = System.currentTimeMillis() - start;
 	System.out.println("Time for heapsort: " + t);
-       	// System.out.println("This is the sorted array using msort\n" + Arrays.toString(rand2)); 
+       	// System.out.println("This is the sorted array using heapsort\n" + Arrays.toString(rand2)); 
 
 	start = System.currentTimeMillis();
 	q.quicksort(rand);
