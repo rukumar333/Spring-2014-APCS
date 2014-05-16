@@ -3,18 +3,18 @@ import java.util.*;
 
 public class Driver{
     public static void main(String[] args){
-	int[] b = new int[50];
 	Random r = new Random();
-	for(int i = 0; i < b.length; i ++){
-	    b[i] = r.nextInt(40);
+	RunningMedian rm = new RunningMedian();
+	for(int i = 0; i < 11; i++){
+	    rm.add(r.nextInt(50));
 	}
-	int[] a = {9,4,0,-3,1,16,11,18};
-	System.out.println(Arrays.toString(b));
-	// HeapSort.heapify(b);
-	// System.out.println(Arrays.toString(b));
-	// int[] b = {9,4,0,-3,1,16,11,18,19};
-	// System.out.println(Arrays.toString(b));
-	HeapSort.heapSort(b);
-	System.out.println(Arrays.toString(b));
+	for(int i = 0; i < 12; i++){
+	    rm.remove();
+	}
+	System.out.println(rm);
+	System.out.println(rm.median());
+	System.out.println("This is the removed item: " + rm.remove());
+	System.out.println(rm);
+	System.out.println(rm.median());
     }
 }
