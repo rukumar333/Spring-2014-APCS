@@ -85,4 +85,31 @@ public class RunningMedian{
 	return "Max Heap: \n" + maxh + "\nMin Heap: \n" + minh;
     }
 
+    public String getSortedArray(){
+	int alength = maxh.getLength();
+	int blength = minh.getLength();
+	int[] result = new int[alength + blength];
+	int[] a = maxh.getArray();
+	int[] b = minh.getArray();
+	for(int i = 0; i < alength; i++){
+	    result[i] = a[i];
+	}
+	for(int i = alength; i < alength + blength ; i++){
+	    result[i] = b[i - alength];
+	}
+	HeapSort.heapSort(result);
+	// System.out.println("This is the array from max: \n"+Arrays.toString(a));
+	// System.out.println("This is the array from min: \n"+Arrays.toString(b));
+	// System.out.println("This is the sorted array: \n"+Arrays.toString(result));
+	return Arrays.toString(result);
+    }
+
+    public boolean hasItems(){
+	if(maxh.getLength() > 0 || minh.getLength() > 0){
+	    return true;
+	}else{
+	    return false;
+	}
+    }
+
 }

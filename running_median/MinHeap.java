@@ -148,4 +148,8 @@ public class MinHeap{
 	return Arrays.toString(heap);
     }
 
+    public int[] getArray(){
+	return heap;
+    }
+
 }
