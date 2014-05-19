@@ -6,7 +6,7 @@ public class Sorry{
     public void test1(Random r, int size){
 	RunningMedian rm = new RunningMedian();
 	for(int i = 0; i < size; i ++){
-	    int k = r.nextInt(50);
+	    int k = r.nextInt(100);
 	    rm.add(k);
 	    double d = rm.median();
 	    System.out.println("added: " + k + ", median is: " + d + "  " + rm.getSortedArray());
@@ -18,20 +18,16 @@ public class Sorry{
 	int test = 1;
 	RunningMedian rm = new RunningMedian();
 	for(int i = 0; i < size; i ++){
-	    int k = r.nextInt(50);
+	    int k = r.nextInt(100);
 	    double x;
 	    rm.add(k);
 	    double d = rm.median();
-	    test = rand.nextInt(5);
+	    test = r.nextInt(5);
 	    System.out.println("added: " + k + ", median is: " + d + "  " + rm.getSortedArray());
-	    if(test == 1 && rm.hasItems()){
+	    if(test == 0){
 		x = rm.remove();
-		if(rm.hasItems()){
-		    d = rm.median();
-		    System.out.println("removed median is " + x + ".   " + rm.getSortedArray() + "  new median is: " + d);
-		}else{
-		    System.out.println("removed median is " + x + ".   " + rm.getSortedArray() + "  collection is now EMPTY!");
-		}
+		d = rm.median();
+		System.out.println("removed median is " + x + ".   " + rm.getSortedArray() + "  new median is: " + d);
 	    }
 	}
     }
